@@ -14,5 +14,5 @@ def sumFibonacciSequence(nth=50):
     return f'Sum is {sum(seq)}'
 
 print()
-print(sumFibonacciSequence(7))
+print(sumFibonacciSequence())
 print()
