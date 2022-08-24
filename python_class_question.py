@@ -40,6 +40,7 @@ def extractTextFromFileTable(file):
 
 
 def getFrequency():
+
     text = extractTextFromFileTable('python_class_question.html')
     frequency = {}
 
@@ -49,39 +50,49 @@ def getFrequency():
                 frequency[x] += y
             else:
                 frequency[x] = y
+
     return frequency
 
 
 def getMean():
+
     freq = getFrequency()
     mean_color = f'Mean color value is {round(mean(list(freq.values())), 2)}'
+
     return mean_color
             
 
 def getMode():
+
     freq = getFrequency()
     mode_color = f'Mode color of shirt for the week is {max(freq, key=freq.get)}'
+
     return mode_color
 
 
 def getMedian():
+
     freq = getFrequency()
     sorted_k_v = sorted(freq.items(), key=lambda x: x[1])
     middle = float(len(sorted_k_v))/2
+
     if middle % 2 != 0:
         return f'The median color is {sorted_k_v[int(middle - .5)][0]}' 
     else:
         return f'The median colors are {sorted_k_v[int(middle)][0]} and {sorted_k_v[int(middle-1)][0]}'
 
 def getVariance():
+
     freq = getFrequency()
     n = len(list(freq.values()))
     x = round(mean(freq.values()), 2)
     deviation = [round(((y - x) ** 2), 2) for y in list(freq.values())]
+    
     return f'Variance is {round((sum(deviation)/n), 2)}'
 
 
 def saveColorFrequencyInPostgresql():
+
     conn = psycopg2.connect(
         database="test",
         user='postgres',
@@ -101,6 +112,7 @@ def saveColorFrequencyInPostgresql():
 
     freq = getFrequency()
     freqList = [(k, v) for k, v in freq.items()]
+
     for i in freqList:
         sql2='''insert into COLORS(color , frequency) VALUES{};'''.format(i)
 
@@ -108,6 +120,7 @@ def saveColorFrequencyInPostgresql():
 
     sql3='''select * from COLORS;'''
     cursor.execute(sql3)
+
     for i in cursor.fetchall():
         print(i)
  

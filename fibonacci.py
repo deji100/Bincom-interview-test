@@ -1,4 +1,5 @@
 def sumFibonacciSequence(nth=50):
+
     n1, n2 = 0, 1
     count = 0
     seq = []
@@ -9,6 +10,9 @@ def sumFibonacciSequence(nth=50):
         n1 = n2
         n2 = n
         count += 1
-    return sum(seq)
 
-print(sumFibonacciSequence())
+    return f'Sum is {sum(seq)}'
+
+print()
+print(sumFibonacciSequence(7))
+print()
