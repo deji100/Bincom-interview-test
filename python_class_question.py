@@ -84,7 +84,7 @@ def getMedian():
         m2 = sorted_k_v[int(middle - 1)]
         if m1[1] > m2[1]:
             return f'Median color is {sorted_k_v[int(middle)][0]}'
-        elif m2 > m1:
+        elif m2[1] > m1[1]:
             return f'Median color is {sorted_k_v[int(middle -1)][0]}'
         else:
             return f'Median colors are {sorted_k_v[int(middle)][0]} and {sorted_k_v[int(middle-1)][0]}'
