@@ -41,7 +41,7 @@ def extractTextFromFileTable(file):
 
 def getFrequency():
 
-    text = extractTextFromFileTable('python_class_question.html')
+    text = extractTextFromFileTable("python_class_question.html")
     frequency = {}
 
     for v in text.values():
