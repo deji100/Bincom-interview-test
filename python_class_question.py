@@ -1,3 +1,4 @@
+from re import M
 import psycopg2, os
 from statistics import mean
 from bs4 import BeautifulSoup
@@ -79,7 +80,15 @@ def getMedian():
     if middle % 2 != 0:
         return f'The median color is {sorted_k_v[int(middle - .5)][0]}' 
     else:
-        return f'The median colors are {sorted_k_v[int(middle)][0]} and {sorted_k_v[int(middle-1)][0]}'
+        m1 = sorted_k_v[int(middle)]
+        m2 = sorted_k_v[int(middle - 1)]
+        if m1[1] > m2[1]:
+            return f'Median color is {sorted_k_v[int(middle)][0]}'
+        elif m2 > m1:
+            return f'Median color is {sorted_k_v[int(middle -1)][0]}'
+        else:
+            return f'Median colors are {sorted_k_v[int(middle)][0]} and {sorted_k_v[int(middle-1)][0]}'
+
 
 def getVariance():
 
